@@ -9,6 +9,7 @@ const app = express()
 app.get('/', (req, res)=>{
     console.log("User has sent get request, so we give them: ")
     res.send("Hi, also check: /status /json /download") 
+
 })
 
 app.get('/status', (req, res)=>{
@@ -27,6 +28,21 @@ app.get('/download', (req, res)=>{
     console.log("downloading the file")
     res.download('README.md')
 })
+
+
+
+// TO RENDER html --
+
+app.set('view engine', 'ejs')
+app.get('/renderhtml', (req, res)=>{
+
+    console.log('to render HTML/ views')
+    // res.render('index')
+    res.render('index', {text: 'world'})
+})
+
+
+
 
 //run app : listen at port 3000
 app.listen(3000)
