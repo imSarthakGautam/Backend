@@ -8,7 +8,7 @@ const app = express()
 //defining routes for handling get requests
 app.get('/', (req, res)=>{
     console.log("User has sent get request, so we give them: ")
-    res.send("Hi, also check: /status /json /download") 
+    res.send("Hi, also check: /status /json /download /renderhtml") 
 
 })
 
