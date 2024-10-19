@@ -2,6 +2,8 @@ const express= require('express')
 
 const router = express.Router()
 
+// NOTE: to add middleware before this route
+// route.use(middleware_function)
 
 router.get('/', (req, res)=>{
     console.log('User List')
@@ -60,6 +62,7 @@ router.param('id', (req, res, next, id)=>{
     next()
 })
 
+//middleware_function
 
 
 module.exports = router
