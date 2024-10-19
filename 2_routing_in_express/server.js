@@ -3,6 +3,11 @@ const app = express()
 
 app.set('view engine', 'ejs')
 
+
+// Rendering the static files 
+app.use(express.static('public'))
+
+
 app.get('/', (req, res)=>{
     console.log('Home Page Here')
     res.send('Home Page')
@@ -29,7 +34,5 @@ app.use('/users', userRouter)
  It essentially tells the application that whenever a request is made to the /users path or any subpaths,
  the routes defined within the userRouter should be used to handle the request.
  */
-
-
 
 app.listen(3000)

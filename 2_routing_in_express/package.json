@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start2": "nodemon server2_with_middlewares.js "
   },
   "keywords": [],
   "author": "",
