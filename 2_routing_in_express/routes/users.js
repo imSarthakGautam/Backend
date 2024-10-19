@@ -6,17 +6,30 @@ const router = express.Router()
 // route.use(middleware_function)
 
 router.get('/', (req, res)=>{
+    //query parameters.
+    console.log(req.query.name)
     console.log('User List')
     res.send('User List')
 })
 
 router.get('/new', (req, res)=>{
     console.log(' New User Form')
-    res.send(' New User Form')
+    //render user form
+    res.render("users/new", {username : "Sarthak"})
 })
 
 router.post('/', (req, res)=>{
-    res.send('Create New user')
+   // res.send('Create New user')
+    console.log(req.body.username)
+    // to read property of body you need express.urlencoded middleware
+    const isValid = true
+    if (isValid){
+        users.push({name: req.body.username})
+        res.redirect(`/users/${users.length-1}`)
+    } else{
+        console.log("error")
+        res.render("users/new", {username : req.body.username})
+    }
 })
 
 //CAUTION: /new should be above this.

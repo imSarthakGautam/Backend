@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Username Input Form</title>
+</head>
+<body>
+  <h1>Enter Your Username</h1>
+  <form action="/users" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value=<%=locals.username %>
+    >
+    <br>
+    <button type="submit" value="Submit">Submit</button>
+  </form>
+</body>
+</html>

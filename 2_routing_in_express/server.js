@@ -8,10 +8,20 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 
+//used to parse URL-encoded data, which is commonly used in HTML forms.
+app.use(express.urlencoded({extended:true}))
+//commonly used for API requests and responses. It extracts the JSON data from the req.body object,
+app.use(express.json())
+
+
+
 app.get('/', (req, res)=>{
     console.log('Home Page Here')
     res.send('Home Page')
 })
+
+// for view engine ejs
+app.set('view engine', 'ejs')
 
 /* ---------------for users section routing generally :
 
