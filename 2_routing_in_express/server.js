@@ -19,9 +19,17 @@ app.get('/users/new', (req, res)=>{
     console.log(' New User Form')
 })
 
------------------------------------ */
+------------------  A L T E R N A T I V E L Y----------------- */
 
 const userRouter = require('./routes/users')
+
+//mounts userRouter object imported at /users path within express app 
 app.use('/users', userRouter)
+/*function :
+ It essentially tells the application that whenever a request is made to the /users path or any subpaths,
+ the routes defined within the userRouter should be used to handle the request.
+ */
+
+
 
 app.listen(3000)
