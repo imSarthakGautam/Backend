@@ -48,7 +48,7 @@ When a frontend (FE) application attempts to make a request to a backend (BE) se
  ```
  `'api':'http://localhost:3000'`: This configuration tells Vite to proxy the requests to the /api path to the specified URL (`http://localhost:3000`). This means that any requests made to `/api` in your frontend code will be forwarded to the backend server running on `http://localhost:3000`.
 
- if in production change localhost to hosting site
+ if in production change localhost to hosting site.
 
 
 

@@ -12,8 +12,10 @@ function App() {
   useEffect(() => {
 
     //--localhost:3000 ma get request pathaune
-    axios.get('http://localhost:3000/players')
+    //axios.get('http://localhost:3000/api/players')
+    axios.get('/api/players')
     .then((response)=>{
+      console.log("response aayo",response.data)
       setPlayers(response.data)
       // Axios will handle the conversion from the JSON string to a JavaScript object for you
     })
@@ -21,24 +23,25 @@ function App() {
       console.log('error in axios.catch()',error)
     })
     
-  })
+  },[])
 
 
   return (
-  <>
+  <div>
    <div className="container">Player Details</div>
+   
    <p>players: {players.length} </p>
 
    {
-    players.map((player)=>{
+    players.map((player)=>(
       <div key={player.id}>
         <h3 className="name">{player.name}</h3>
         <p>{player.club}</p>
 
       </div>
-    })
+    ))
    }
-   </>
+   </div>
   )
 }
 
