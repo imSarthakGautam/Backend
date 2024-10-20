@@ -6,7 +6,9 @@ app.set('view engine', 'ejs')
 
 // Rendering the static files 
 app.use(express.static('public'))
-
+//can also be done as :
+const path = require('path')
+app.use(express.static(path.join(__dirname, '/public')))
 
 //used to parse URL-encoded data, which is commonly used in HTML forms.
 app.use(express.urlencoded({extended:true}))
