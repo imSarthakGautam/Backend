@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+
+    <div class="main w-full min-h-screen bg-zinc-900 flex flex-col items-center justify-center p-8">
+        <div class="form bg-zinc-800 p-8 rounded-lg shadow-lg w-full max-w-md mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-6 text-center">Create a Sticky Note</h2>
+            <form action="/create" class="space-y-4" method="POST">
+                <input
+                    name="title"
+                    class="block w-full p-3 text-zinc-800 rounded-md border border-zinc-400 focus:outline-none focus:border-yellow-400"
+                    type="text" placeholder="Title">
+                <textarea
+                    name="content"
+                    class="block w-full p-3 resize-none text-zinc-800 rounded-md border border-zinc-400 focus:outline-none focus:border-yellow-400"
+                    cols="10" rows="3" placeholder="Your note here"></textarea>
+                <input
+                    class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md cursor-pointer transition-colors duration-200"
+                    type="submit" value="Create Note">
+            </form>
+        </div>
+        <!-- Sticky Notes Container -->
+    <div class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl">
+        <!-- Example of a Sticky Note -->
+        <% if (files.length>0){  %>
+            <% files.forEach((val)=>{%>
+                <div class="bg-yellow-300 text-zinc-800 p-4 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-lg mb-2" name="ntitle"><%= val %></h3>
+                    <p class="text-sm" name="ncontent">This is the content of the sticky note.</p>
+                </div>
+        
+                <!-- Repeat for more sticky notes -->
+                
+
+            <%}) %>
+            <% } else { %>
+                <div class="text-zinc-400 text-sm italic">No sticky notes yet.</div>
+            <% } %>    
+
+
+        
+    </div>
+
+    </div>
+    
+    
+</body>
+</html>
