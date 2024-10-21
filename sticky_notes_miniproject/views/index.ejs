@@ -31,11 +31,20 @@
     <div class="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl">
         <!-- Example of a Sticky Note -->
         <% if (files.length>0){  %>
-            <% files.forEach((val)=>{%>
+            <% files.forEach((val, index)=>{%>
                 <div class="bg-yellow-300 text-zinc-800 p-4 rounded-lg shadow-md">
-                    <h3 class="font-semibold text-lg mb-2" name="ntitle"><%= val %></h3>
-                    <p class="text-sm" name="ncontent">This is the content of the sticky note.</p>
+                    <h3 class="font-semibold text-lg mb-2" name="ntitle"><%= val.replace('.txt','').replace('_',' ') %></h3>
+                    <p class="text-sm" name="ncontent"><%= filedata[index] %></p>
+                     <!-- Action Buttons -->
+                    <div class="flex space-x-5 text-sm mt-5">
+                        
+                        <a href="/edit/<%= val %>" class="text-blue-600 hover:underline">Edit</a>
+                        <a href="/delete/<%= val %>" class="text-red-600 hover:underline">Delete</a>
+                        <a href="/file/<%= val %>" class="text-blue-600 hover:underline">View in file</a>
+                    </div>
+                    
                 </div>
+                
         
                 <!-- Repeat for more sticky notes -->
                 

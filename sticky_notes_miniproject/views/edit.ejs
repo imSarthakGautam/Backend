@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit file</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+
+    <div class="main w-full min-h-screen bg-zinc-900 flex flex-col items-center justify-center p-8">
+        <div class="form bg-zinc-800 p-8 rounded-lg shadow-lg w-full max-w-md mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-6 text-center">Edit a Sticky Note</h2>
+            <form action="/edit" class="space-y-4" method="POST">
+                <%= console.log('inside form', filename) %>
+                <input type="hidden" name="old_title" value="<%= filename %>">
+                <input
+                    name="new_title"
+                    value="<%= filename.replace('.txt','').replace('_',' ') %>"
+                    class="block w-full p-3 text-zinc-800 rounded-md border border-zinc-400 focus:outline-none focus:border-yellow-400"
+                    type="text" placeholder="Title">
+
+                <textarea
+                    name="content"
+                    class="block w-full p-3 resize-none text-zinc-800 rounded-md border border-zinc-400 focus:outline-none focus:border-yellow-400"
+                    cols="10" rows="3"> <%= fileContent %></textarea>
+                <input
+                    class="block w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-md cursor-pointer transition-colors duration-200"
+                    type="submit" value="Edit Note">
+            </form>
+        </div>
+       
+
+    </div>
+    
+    
+</body>
+</html>
