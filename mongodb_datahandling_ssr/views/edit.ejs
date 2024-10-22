@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900">
+
+  <div class="min-h-screen flex items-center justify-center">
+    <form action="/update/<%= user._id  %>" method="POST" class="max-w-lg w-full bg-zinc-800 p-10 rounded-md shadow-md">
+      <table class="table-auto w-full">
+        <tbody>
+          <tr class="mb-16">
+            <td class="pb-4 pr-4">
+              <label for="name" class="block text-white">Name:</label>
+            </td>
+            <td class="pb-4">
+              <input type="text" 
+                name="name"
+                id="name" 
+                value ="<%= user.name  %>"
+                placeholder="Sarthak Gautam" class="block w-full p-4 border border-zinc-400 rounded-md focus:outline-none focus:border-yellow-400 mb-4">
+            </td>
+          </tr>
+          <tr class="mb-16">
+            <td class="pb-4 pr-4">
+              <label for="email" class="block text-white">Email:</label>
+            </td>
+            <td class="pb-4">
+              <input type="email" 
+              name="email" 
+              value ="<%= user.email  %>"
+              id="email" placeholder="sarthak@mail.com" class="block w-full p-4 border border-zinc-400 rounded-md focus:outline-none focus:border-yellow-400 mb-4">
+            </td>
+          </tr>
+          <tr class="mb-16">
+            <td class="pb-4 pr-4">
+              <label for="image_url" class="block text-white">Image URL:</label>
+            </td>
+            <td class="pb-4">
+              <input type="text"  
+              name="image_url" 
+              value ="<%= user.image_url  %>"
+              placeholder="image url" id="image_url" class="block w-full p-4 border border-zinc-400 rounded-md focus:outline-none focus:border-yellow-400 mb-4">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <button type="submit" class="bg-yellow-500 text-white py-3 w-full rounded-md mt-6">Update</button>
+      <a href="/profiles" class="block mt-8 text-center text-yellow-500 hover:underline">View Saved Profiles</a>
+    </form>
+  </div>
+
+</body>
+</html>
