@@ -92,9 +92,9 @@ Clear Token: When the user logs out, the JWT token stored in the cookie is clear
 
 ## Routes
 Routes
-`GET /`: Home page with a user registration form.
-`POST /create` : Handles user registration, password hashing, and token generation.
-`GET /login` : Login page with a form to authenticate the user.
-`POST /login` : Validates user credentials, generates a JWT token, and sets it in the cookies.
-`GET /logout` : Logs out the user by clearing the token from the cookie.
-`GET /profile` : Access only to verified users via jwt tokens.
+- `GET /`: Home page with a user registration form.
+- `POST /create` : Handles user registration, password hashing, and token generation.
+- `GET /login` : Login page with a form to authenticate the user.
+- `POST /login` : Validates user credentials, generates a JWT token, and sets it in the cookies.
+- `GET /logout` : Logs out the user by clearing the token from the cookie.
+- `GET /profile` : Access only to verified users via jwt tokens.
