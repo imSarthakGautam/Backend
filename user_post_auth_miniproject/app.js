@@ -84,7 +84,7 @@ app.post('/login',async (req,res)=>{
         );
 
         res.cookie('token', token);
-        res.status(200).send('you can login');
+        res.status(200).redirect('/profile');
     } else {
         res.redirect('/login');
     }   
@@ -99,14 +99,37 @@ app.get('/logout', (req,res)=>{
 })
 
 //protected route that requires login.
-app.get('/profile', isLoggedIn, (req,res)=>{
-    console.log(req.user);
-    res.send('logged in so you can aceesss');
+app.get('/profile', isLoggedIn, async (req,res)=>{
+    let email=req.user.email
+    console.log(email);
+    let users= await userModel.findOne({email}).populate('post')
+    console.log(users)
+
+    res.render('profile', {users})
+
+    //res.send('logged in so you can aceesss');
 })
+
+app.post('/create-post',isLoggedIn, async (req, res)=>{
+    console.log(req.body, req.user)
+    //res.send('Users Post')
+    //user, date, content, likes.
+    let user= await userModel.findOne({email : req.user.email})
+    let post = await postModel.create({
+        user: user._id,
+        content: req.body.postContent,
+    })
+
+    user.post.push(post._id)
+    await user.save()
+    res.redirect('/profile')
+
+})
+
 
 //middleware for protected routes
 function isLoggedIn(req, res, next){
-    if (req.cookies.token==='') res.send('you must be logged in')
+    if (req.cookies.token==='') res.redirect('/login')
     else {
         let data = jwt.verify(req.cookies.token, secretkey)
         req.user=data
@@ -117,6 +140,7 @@ function isLoggedIn(req, res, next){
     next()
 
 }
+
 
 
 
