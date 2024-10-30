@@ -2,6 +2,8 @@ Multer is a Node.js middleware for handling file uploads, particularly in applic
 
 - used for handling multipart/form-data, which is a __format specifically designed for file uploads in HTML forms__.
 
+- Multer adds a `body` object (text-feilds) or `file/files` object (actual file selected) to req.
+
 ## Features :
 
 - eases file storage and upload, by letting user decide how and where to store on server (memory or disk)
