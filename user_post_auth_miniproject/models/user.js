@@ -7,6 +7,10 @@ const userSchema=mongoose.Schema({
     age: Number,
     email : String,
     password: String,
+    profile_pic : {
+        type: String,
+        default: 'defaultpp.png'
+    },
     post : [
         {
             type: mongoose.Schema.Types.ObjectId, ref: "post"

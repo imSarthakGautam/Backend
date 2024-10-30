@@ -5,6 +5,8 @@ const userModel = require('./models/user')
 const postModel = require('./models/post')
 const bcrypt= require('bcrypt')
 const jwt= require('jsonwebtoken')
+//import multer
+const upload= require('./config/multerconfig');
 
 //main app 
 const app = express();
@@ -52,8 +54,8 @@ app.post('/register',async (req,res)=>{
 
         res.cookie('token', token);
         console.log('cookie saved of', createdUser.username)
-        res.send(`${createdUser.username} registered`)
-        //res.redirect
+        console.log(`${createdUser.username} registered`)
+        res.redirect('profile')
     })
    })
 })
@@ -103,6 +105,25 @@ app.get('/profile', isLoggedIn, async (req,res)=>{
     console.log(users)
     res.render('profile', {users})
 })
+
+//----upload pp page
+app.get('/profile/upload', isLoggedIn, async (req,res)=>{
+    let email=req.user.email
+    let users= await userModel.findOne({email}).populate('post')
+    res.render('upload_profile', {users})
+})
+
+//----
+app.post('/upload', isLoggedIn, upload.single('profilePic'),async (req,res)=>{
+    let email=req.user.email
+    let users= await userModel.findOne({email}).populate('post')
+    console.log(req.file)
+    users.profile_pic = req.file.filename
+    await users.save()
+    res.redirect('/profile')
+})
+
+
 
 
 //---------------------like functionality-------------------
